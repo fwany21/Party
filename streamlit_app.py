@@ -75,3 +75,5 @@ if os.path.exists(photo_dir):
         st.info("사진이 없습니다.")
 else:
     st.warning("사진 디렉토리가 존재하지 않습니다.")
+
+st.close()
