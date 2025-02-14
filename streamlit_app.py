@@ -53,7 +53,7 @@ if os.path.exists(photo_dir):
             image = correct_image_orientation(image)
             width, height = image.size
             if width > height:
-                st.image(image, use_column_width=True)
+                st.image(image, use_container_width=True)
             else:
                 st.markdown(f"<div style='display: flex; justify-content: center;'><img src='data:image/png;base64,{st.image(image, output_format='PNG')}' width='300'/></div>", unsafe_allow_html=True)
     else:
