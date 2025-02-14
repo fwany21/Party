@@ -63,7 +63,6 @@ photo_dir = 'photos'
 if os.path.exists(photo_dir):
     photos = [f for f in os.listdir(photo_dir) if f.lower().endswith(('jpg', 'jpeg', 'png', 'gif', 'png'))]
     if photos:
-        st.write("## 📸 사진 슬라이드쇼")
         for photo in photos:
             try:
                 image = Image.open(os.path.join(photo_dir, photo))
