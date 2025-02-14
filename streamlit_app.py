@@ -1,8 +1,6 @@
 import streamlit as st
 import os
 from PIL import Image, ExifTags
-import base64
-from io import BytesIO
 
 # Title of the invitation
 st.title("🎉 나연이의 8번째 생일 파티에 초대합니다! 🎉")
@@ -44,12 +42,6 @@ def correct_image_orientation(image):
 
     return image
 
-# Function to convert image to base64
-def image_to_base64(image):
-    buffered = BytesIO()
-    image.save(buffered, format="PNG")
-    return base64.b64encode(buffered.getvalue()).decode()
-
 # Photo slideshow
 photo_dir = 'photos'
 if os.path.exists(photo_dir):
@@ -60,15 +52,8 @@ if os.path.exists(photo_dir):
             try:
                 image = Image.open(os.path.join(photo_dir, photo))
                 image = correct_image_orientation(image)
-                width, height = image.size
-                if width > height:
-                    st.image(image, use_container_width=True)
-                else:
-                    img_base64 = image_to_base64(image)
-                    st.markdown(
-                        f"<div style='display: flex; justify-content: center;'><img src='data:image/png;base64,{img_base64}' width='300'/></div>",
-                        unsafe_allow_html=True
-                    )
+                st.image(image, use_column_width=True)
+                st.write("")  # Add spacing between images
             except Exception as e:
                 st.write(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}")
     else:
