@@ -18,6 +18,7 @@ st.markdown("""
     .block-container {
         flex: 1;
     }
+    #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 0rem;}
     </style>
     """, unsafe_allow_html=True)
 
