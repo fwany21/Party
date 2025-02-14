@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from PIL import Image, ExifTags
+from PIL import Image, ExifTags, UnidentifiedImageError
 
 # Title of the invitation
 st.set_page_config(page_title="나연이의 생일 파티 초대", layout="centered")
@@ -69,6 +69,8 @@ if os.path.exists(photo_dir):
                 image = Image.open(os.path.join(photo_dir, photo))
                 image = correct_image_orientation(image)
                 st.image(image, use_container_width=True, caption=photo)
+            except UnidentifiedImageError:
+                st.error(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}. Error: Unidentified image file.")
             except Exception as e:
                 st.error(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}. Error: {e}")
     else:
