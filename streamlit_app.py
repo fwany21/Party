@@ -6,6 +6,21 @@ from PIL import Image, ExifTags
 st.set_page_config(page_title="나연이의 생일 파티 초대", layout="centered")
 st.title("🎉 나연이의 8번째 생일 파티에 초대합니다! 🎉")
 
+# Custom CSS to handle mobile viewport height issues
+st.markdown("""
+    <style>
+    .main {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .block-container {
+        flex: 1;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # Invitation message
 st.write("""
 👋안녕하세요
