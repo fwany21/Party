@@ -62,7 +62,7 @@ if os.path.exists(photo_dir):
                 image = correct_image_orientation(image)
                 width, height = image.size
                 if width > height:
-                    st.image(image, use_column_width=True)
+                    st.image(image, use_container_width=True)
                 else:
                     img_base64 = image_to_base64(image)
                     st.markdown(
