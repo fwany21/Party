@@ -52,7 +52,7 @@ if os.path.exists(photo_dir):
             try:
                 image = Image.open(os.path.join(photo_dir, photo))
                 image = correct_image_orientation(image)
-                st.image(image, use_column_width=True)
+                st.image(image, use_container_width=True)
                 st.write("")  # Add spacing between images
             except Exception as e:
                 st.write(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}")
