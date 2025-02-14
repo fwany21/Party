@@ -13,7 +13,7 @@ st.write("""
 
 📆 **언제**: 2월 15일 토요일 6시
 
-🚩 **장소**: 무키무키 수원하늘채점
+🚩 **장소**: [무키무키 수원하늘채점](https://naver.me/xprAEmgI)
 (주차공간이 협소하다고 합니다)
 
 함께 와서 맛있는 거 먹고 즐겁게 놀아보아요~🤩
@@ -53,7 +53,7 @@ if os.path.exists(photo_dir):
             image = correct_image_orientation(image)
             width, height = image.size
             if width > height:
-                st.image(image, use_container_width=True)
+                st.image(image, use_column_width=True)
             else:
                 st.markdown(f"<div style='display: flex; justify-content: center;'><img src='data:image/png;base64,{st.image(image, output_format='PNG')}' width='300'/></div>", unsafe_allow_html=True)
     else:
