@@ -76,4 +76,4 @@ if os.path.exists(photo_dir):
 else:
     st.warning("사진 디렉토리가 존재하지 않습니다.")
 
-st.end()
+st.markdown('#')
