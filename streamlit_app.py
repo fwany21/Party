@@ -29,7 +29,7 @@ if os.path.exists(photo_dir):
             image = Image.open(os.path.join(photo_dir, photo))
             width, height = image.size
             if width > height:
-                st.image(image, use_column_width=True)
+                st.image(image, use_container_width=True)
             else:
                 st.image(image, width=300)
     else:
