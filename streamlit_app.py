@@ -68,7 +68,7 @@ if os.path.exists(photo_dir):
             try:
                 image = Image.open(os.path.join(photo_dir, photo))
                 image = correct_image_orientation(image)
-                st.image(image, use_container_width=True, caption=photo)
+                st.image(image, use_container_width=True)
             except Exception as e:
                 st.error(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}")
     else:
@@ -76,4 +76,4 @@ if os.path.exists(photo_dir):
 else:
     st.warning("사진 디렉토리가 존재하지 않습니다.")
 
-st.close()
+st.end()
