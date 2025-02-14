@@ -3,6 +3,7 @@ import os
 from PIL import Image, ExifTags
 
 # Title of the invitation
+st.set_page_config(page_title="나연이의 생일 파티 초대", layout="centered")
 st.title("🎉 나연이의 8번째 생일 파티에 초대합니다! 🎉")
 
 # Invitation message
@@ -52,11 +53,10 @@ if os.path.exists(photo_dir):
             try:
                 image = Image.open(os.path.join(photo_dir, photo))
                 image = correct_image_orientation(image)
-                st.image(image, use_container_width=True)
-                st.write("")  # Add spacing between images
+                st.image(image, use_container_width=True, caption=photo)
             except Exception as e:
-                st.write(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}")
+                st.error(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}")
     else:
-        st.write("사진이 없습니다.")
+        st.info("사진이 없습니다.")
 else:
-    st.write("사진 디렉토리가 존재하지 않습니다.")
+    st.warning("사진 디렉토리가 존재하지 않습니다.")
