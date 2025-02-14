@@ -18,6 +18,10 @@ st.markdown("""
     .block-container {
         flex: 1;
     }
+    .stAppHeader {
+            background-color: rgba(255, 255, 255, 0.0);  /* Transparent background */
+            visibility: hidden;  /* Ensure the header is visible */
+        }
     </style>
     """, unsafe_allow_html=True)
 
