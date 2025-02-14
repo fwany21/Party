@@ -1,6 +1,4 @@
 import streamlit as st
-import folium
-from streamlit_folium import st_folium
 import os
 from PIL import Image
 
@@ -21,25 +19,19 @@ st.write("""
 함께 와서 맛있는 거 먹고 즐겁게 놀아보아요~🤩
 """)
 
-# Map location
-location = [37.2578, 127.0105]  # Latitude and Longitude of the location
-
-# Create a map
-m = folium.Map(location=location, zoom_start=16)
-folium.Marker(location, tooltip="무키무키 수원하늘채점").add_to(m)
-
-# Display the map
-st_folium(m, width=700, height=500)
-
 # Photo slideshow
 photo_dir = 'photos'
 if os.path.exists(photo_dir):
-    photos = [f for f in os.listdir(photo_dir) if f.endswith(('jpg', 'jpeg', 'png', 'gif'))]
+    photos = [f for f in os.listdir(photo_dir) if f.lower().endswith(('jpg', 'jpeg', 'png', 'gif'))]
     if photos:
         st.write("## 📸 사진 슬라이드쇼")
         for photo in photos:
             image = Image.open(os.path.join(photo_dir, photo))
-            st.image(image)
+            width, height = image.size
+            if width > height:
+                st.image(image, use_column_width=True)
+            else:
+                st.image(image, width=300)
     else:
         st.write("사진이 없습니다.")
 else:
