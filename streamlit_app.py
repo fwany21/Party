@@ -55,7 +55,7 @@ if os.path.exists(photo_dir):
             if width > height:
                 st.image(image, use_column_width=True)
             else:
-                st.image(image, width=300)
+                st.markdown(f"<div style='display: flex; justify-content: center;'><img src='data:image/png;base64,{st.image(image, output_format='PNG')}' width='300'/></div>", unsafe_allow_html=True)
     else:
         st.write("사진이 없습니다.")
 else:
