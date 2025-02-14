@@ -54,22 +54,23 @@ def correct_image_orientation(image):
             elif orientation == 8:
                 image = image.rotate(90, expand=True)
     except Exception as e:
-        pass
+        st.error(f"Error correcting image orientation: {e}")
 
     return image
 
 # Photo slideshow
 photo_dir = 'photos'
 if os.path.exists(photo_dir):
-    photos = [f for f in os.listdir(photo_dir) if f.lower().endswith(('jpg', 'jpeg', 'png', 'gif', 'png'))]
+    photos = [f for f in os.listdir(photo_dir) if f.lower().endswith(('jpg', 'jpeg', 'png', 'gif'))]
     if photos:
+        st.write("## 📸 사진 슬라이드쇼")
         for photo in photos:
             try:
                 image = Image.open(os.path.join(photo_dir, photo))
                 image = correct_image_orientation(image)
                 st.image(image, use_container_width=True, caption=photo)
             except Exception as e:
-                st.error(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}")
+                st.error(f"이미지를 로드하는 동안 오류가 발생했습니다: {photo}. Error: {e}")
     else:
         st.info("사진이 없습니다.")
 else:
